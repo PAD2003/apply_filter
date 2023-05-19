@@ -4,7 +4,7 @@ from .functions import load_image, load_pil_image
 import cv2
 from .detectors.dlib_resnet_wrapper import load_model
 
-def apply_filter_on_image(image, output_path = None, filter_name = "squid_game_front_man")->Image:
+def apply_filter_on_image(image, filter_name = "squid_game_front_man", output_path = None)->Image:
     image = load_pil_image(image)
     image = filter_image.filter_image(image, filter_name)
 
@@ -13,13 +13,13 @@ def apply_filter_on_image(image, output_path = None, filter_name = "squid_game_f
     else:
         image.save(output_path)
 
-def apply_filter_on_video(source, output_path: str = None, filter_name: str = "squid_game_front_man")->None:
+def apply_filter_on_video(source, filter_name = "squid_game_front_man", output_path = None)->None:
     # prepare video capture
     cap = cv2.VideoCapture(source)
     cap_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 
     # create the output video file
-    if source != 0:
+    if source != 0 and output_path != None:
         fps = cap.get(cv2.CAP_PROP_FPS)
         frame_size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
@@ -69,10 +69,11 @@ def apply_filter_on_video(source, output_path: str = None, filter_name: str = "s
                     iter_filter_keys = iter(filter_functions.filters_config.keys())
                     filter_name = next(iter_filter_keys)
         else:
-            out.write(frame)
+            if output_path != None:
+                out.write(frame)  
     
     # save & free resource
     cap.release()
-    if source != 0:
+    if source != 0 and output_path != None:
         out.release()
     cv2.destroyAllWindows()

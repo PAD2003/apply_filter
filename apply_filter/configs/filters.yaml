@@ -35,17 +35,3 @@ cat:
     morph: false
     animated: false
     has_alpha: true
-
-jason-joker:
-  - path: "filters/images/jason-joker.png"
-    anno_path: "filters/annotate_file/jason-joker_annotations.csv"
-    morph: true
-    animated: false
-    has_alpha: true
-
-flower-crown:
-  - path: "filters/images/flower-crown.png"
-    anno_path: "filters/annotate_file/flower-crown_annotations.csv"
-    morph: false
-    animated: false
-    has_alpha: true

@@ -1,4 +1,4 @@
-from apply_filter_v1.src import ApplyFilter, test
+from apply_filter.src import ApplyFilter, test
 
 # ApplyFilter.apply_filter_on_image(image="data/images/barack-obama-500.jpg").save("test.png")
 
