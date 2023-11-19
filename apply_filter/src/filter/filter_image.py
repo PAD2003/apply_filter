@@ -1,8 +1,8 @@
 from deepface import DeepFace
-from .filter_functions import *
+from apply_filter.src.filter.filter_functions import *
 import numpy as np
 from PIL import Image
-from ..detectors.dlib_resnet_wrapper import *
+from apply_filter.src.detectors.dlib_resnet_wrapper import *
 
 def filter_image(image: np.array, filter_name = "squid_game_front_man")->Image:
     """Apply filter on faces in image"""
@@ -15,7 +15,7 @@ def filter_image(image: np.array, filter_name = "squid_game_front_man")->Image:
     filters, multi_filter_runtime = load_filter(filter_name=filter_name)
 
     # detect faces
-    resp_objs = DeepFace.extract_faces(img_path=frame, target_size=(224, 224), detector_backend="opencv", enforce_detection=False)
+    resp_objs = DeepFace.extract_faces(img_path=frame, target_size=(224, 224), enforce_detection=False)
 
     if resp_objs is not None:
         for resp_obj in resp_objs:
@@ -108,6 +108,6 @@ def filter_image(image: np.array, filter_name = "squid_game_front_man")->Image:
 
 if __name__ == "__main__":
 
-    image = Image.open("apply_filter/test/data/images/img2.png")
+    image = Image.open("apply_filter/test/data/images/example_1.png")
     image = filter_image(image)
-    image.save("a.png")
+    image.save("apply_filter/test/output/example_1.png")
