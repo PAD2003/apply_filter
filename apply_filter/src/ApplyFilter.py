@@ -1,5 +1,5 @@
 from PIL import Image
-from apply_filter.src.filter import filter_image, filter_video, filter_functions
+from apply_filter.src.filter import filter_image_v1, filter_video, filter_functions
 from apply_filter.src.functions import load_image, load_pil_image
 import cv2
 from apply_filter.src.detectors.dlib_resnet_wrapper import load_model
@@ -7,7 +7,7 @@ from apply_filter.src.detectors.dlib_resnet_wrapper import load_model
 def apply_filter_on_image(image, filter_name = "squid_game_front_man", output_path = None)->Image:
     print("here")
     image = load_pil_image(image)
-    image = filter_image.filter_image(image, filter_name)
+    image = filter_image_v1.filter_image(image, filter_name)
 
     if output_path is None:
         return image
