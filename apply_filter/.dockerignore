@@ -1,0 +1,5 @@
+# Exclude files and directories named __pycache__
+__pycache__
+
+# Exclude the test directory and its contents
+test/
