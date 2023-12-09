@@ -6,7 +6,7 @@
 
 ## Description
 
-In filter project, we are developing an application that applies filters to human faces in an image. Specifically, we use YOLO5Face for face detection, ResNet18 for facial landmarks detection, and then apply filters to the faces using Delaunay triangulation and affine transformation. In this report, we will provide detailed explanations for each part: YOLO5Face, facial landmarks detection, and the filter application.
+In filter project, we are developing an application that applies filters to human faces in an image. Specifically, we use YOLO5Face for face detection, ResNet18 for facial landmarks detection, and then apply filters to the faces using Delaunay triangulation and affine transformation.
 
 In this repository, I implement an application that applies filters to faces using YOLO5Face, ResNet18, along with two algorithms: Delaunay triangulation and affine transformation. Subsequently, I deploy it as a web application using the Gradio library.
 
@@ -32,16 +32,17 @@ pip install -r requirements.txt
 
 ## Pipeline
 
-1. Checkpoint cho YOLO5Face
+1. Checkpoint for YOLO5Face
     
-    Tải xuống checkpoints [yolo5n-0.5.pt](http://yolo5n-0.5.pt/) và để tại vị trí yolov5_face_master/weights/yolo5n-0.5.pt
+    Download the checkpoints yolo5n-0.5.pt at [here](https://github.com/deepcam-cn/yolov5-face.git) and place it at yolov5_face_master/weights/yolo5n-0.5.pt.
     
 2. Run application
     
     ```bash
     python -m apply_filter.app
     ```
-    
+
+    Now, you can access the application at localhost:7000
 
 ## Docker
 
